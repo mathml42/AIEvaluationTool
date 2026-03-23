@@ -23,6 +23,10 @@ improvement_eval.py
 .deepeval
 saved_evaluations
 *.png
+!src/app/documentation_app/src/assets/ai_eval_logo_dark.png
+!src/app/documentation_app/src/assets/ai_eval_logo_light.png
+!src/app/documentation_app/src/assets/cerai-logo.png
+!src/app/documentation_app/src/assets/iit-logo.png
 new_fairness_stereotype_recognition.py
 *.pkl
 .strategy_*.json
