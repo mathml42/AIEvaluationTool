@@ -1,0 +1,51 @@
+# AI Evaluation Tool CLI
+
+This section documents the full command-line workflow for the AI Evaluation Tool in a format suited for an official documentation website. It brings together installation, configuration, GPU and model setup, execution, analysis, and reporting.
+
+## What This Section Covers
+
+- local prerequisites and environment preparation
+- configuration of database, targets, credentials, and environment variables
+- local and remote GPU-backed model setup
+- importer and testcase executor workflow
+- response analysis and report generation
+
+## Chapters
+
+- [Initial Setup and Configuration](./initial_setup_and_configuration.md)
+- [GPU Setup](./gpu_setup.md)
+- [Importer and Testcase Execution](./importer_and_testcase_execution.md)
+- [Analysis and Report](./analysis_and_report.md)
+
+## End-to-End Flow
+
+1. Install system prerequisites and repository dependencies.
+2. Configure the database, environment variables, XPath mappings, and credentials.
+3. Prepare model endpoints, either locally or on a remote GPU host.
+4. Import data and register the target application.
+5. Start Interface Manager and execute test cases.
+6. Analyze collected responses.
+7. Generate the final evaluation report.
+
+## Supported Target Types
+
+- API
+- WhatsApp
+- Web Application
+
+## Core CLI Components
+
+- `src/app/importer`
+- `src/app/interface_manager`
+- `src/app/testcase_executor`
+- `src/app/response_analyzer`
+- `src/app/sarvam_ai`
+- `src/lib/strategy`
+
+## Related References
+
+- [Initial Setup and Configuration](./initial_setup_and_configuration.md)
+- [GPU Setup](./gpu_setup.md)
+- [Importer and Testcase Execution](./importer_and_testcase_execution.md)
+- [Analysis and Report](./analysis_and_report.md)
+- [AI Evaluation Tool PDF Manual](../AI_Evaluation_Tool_Documentation.pdf)
