@@ -148,17 +148,17 @@ OPENAI_API_KEY=""
 
 The following smaller models may also be downloaded as part of runtime evaluation:
 
-1. `amedvedev/bert-tiny-cognitive-bias`
-2. `LibrAI/longformer-harmful-ro`
-3. `vectara/hallucination_evaluation_model`
-4. `thenlper/gte-small`
-5. `all-MiniLM-L6-v2`
-6. `nicholasKluge/ToxiGuardrail`
-7. `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`
-8. `google/flan-t5-large`
-9. `holistic-ai/bias_classifier_albertv2`
-10. `Human-CentricAI/LLM-Refusal-Classifier`
-11. `cross-encoder/nli-deberta-base`
+- `amedvedev/bert-tiny-cognitive-bias`
+- `LibrAI/longformer-harmful-ro`
+- `vectara/hallucination_evaluation_model`
+- `thenlper/gte-small`
+- `all-MiniLM-L6-v2`
+- `nicholasKluge/ToxiGuardrail`
+- `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`
+- `google/flan-t5-large`
+- `holistic-ai/bias_classifier_albertv2`
+- `Human-CentricAI/LLM-Refusal-Classifier`
+- `cross-encoder/nli-deberta-base`
 
 ## Validation Checklist
 

@@ -27,11 +27,11 @@ This makes it useful for both regular regression testing and deeper benchmarking
 
 ## Key Use Cases
 
-- automated testing of conversational agents across multiple platforms
-- performance benchmarking against predefined quality metrics
-- safety and toxicity evaluation of generated responses
-- multilingual capability assessment
-- compliance and responsible AI verification
+- Automated testing of conversational agents across multiple platforms
+- Performance benchmarking against predefined quality metrics
+- Safety and toxicity evaluation of generated responses
+- Multilingual capability assessment
+- Compliance and responsible AI verification
 
 ## Core Benefits
 
@@ -210,9 +210,9 @@ This directory contains core evaluation assets such as test datasets, plan defin
 
 Typical contents include:
 
-- testcase datasets
-- strategy and metric mappings
-- default configuration values
+- Testcase datasets
+- Strategy and metric mappings
+- Default configuration values
 
 ### `src/app/`
 

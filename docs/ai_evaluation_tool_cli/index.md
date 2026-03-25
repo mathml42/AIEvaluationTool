@@ -19,13 +19,13 @@ This section documents the full command-line workflow for the AI Evaluation Tool
 
 ## End-to-End Flow
 
-1. Install system prerequisites and repository dependencies.
-2. Configure the database, environment variables, XPath mappings, and credentials.
-3. Prepare model endpoints, either locally or on a remote GPU host.
-4. Import data and register the target application.
-5. Start Interface Manager and execute test cases.
-6. Analyze collected responses.
-7. Generate the final evaluation report.
+- Install system prerequisites and repository dependencies.
+- Configure the database, environment variables, XPath mappings, and credentials.
+- Prepare model endpoints, either locally or on a remote GPU host.
+- Import data and register the target application.
+- Start Interface Manager and execute test cases.
+- Analyze collected responses.
+- Generate the final evaluation report.
 
 ## Supported Target Types
 
@@ -48,4 +48,3 @@ This section documents the full command-line workflow for the AI Evaluation Tool
 - [GPU Setup](./gpu_setup.md)
 - [Importer and Testcase Execution](./importer_and_testcase_execution.md)
 - [Analysis and Report](./analysis_and_report.md)
-- [AI Evaluation Tool PDF Manual](../AI_Evaluation_Tool_Documentation.pdf)

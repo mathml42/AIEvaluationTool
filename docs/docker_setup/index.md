@@ -32,18 +32,20 @@ Together, these services provide the database layer, browser automation layer, t
 
 ## How The Docker Workflow Fits Together
 
-1. Prepare `.env` and repository config files.
-2. Build the required Docker images.
-3. Start the database, Selenium browser, and Interface Manager.
-4. Make model endpoints reachable from Docker containers.
-5. Run CLI commands with `docker compose run`.
-6. Stop, reset, or extend the stack with optional services as needed.
+- Prepare `.env` and repository config files.
+- Build the required Docker images.
+- Start the database, Selenium browser, and Interface Manager.
+- Make model endpoints reachable from Docker containers.
+- Run CLI commands with `docker compose run`.
+- Stop, reset, or extend the stack with optional services as needed.
 
-[setup-and-configuration]: ./setup_and_configuration.md
-[gpu-setup]: ./gpu_setup.md
-[docker-run]: ./docker_run.md
-[docker-compose]: ../../docker-compose.yml
-[getting-started-docker]: ../03-getting-started-docker.md
-[configuration]: ../05-configuration.md
-[readme]: ../../README.md
-[docker-guide]: ../../DOCKER.md
+## Related Sections
+
+- [setup-and-configuration](./setup_and_configuration.md)
+- [gpu-setup](./gpu_setup.md)
+- [docker-run](./docker_run.md)
+- [docker-compose](../../docker-compose.yml)
+- [getting-started-docker](../03-getting-started-docker.md)
+- [configuration](../05-configuration.md)
+- [readme](../../README.md)
+- [docker-guide](../../DOCKER.md)

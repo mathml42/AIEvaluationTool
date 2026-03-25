@@ -138,14 +138,16 @@ docker compose up -d --force-recreate db selenium-browser interface-manager app-
 
 ## Recommended Run Order
 
-1. build images
-2. start core services
-3. verify GPU endpoints are reachable
-4. import test data
-5. execute testcases
-6. run analysis
-7. generate reports
+- build images
+- start core services
+- verify GPU endpoints are reachable
+- import test data
+- execute testcases
+- run analysis
+- generate reports
 
-[getting-started-docker]: ../03-getting-started-docker.md
-[readme]: ../../README.md
-[docker-guide]: ../../DOCKER.md
+## Related Sections
+
+- [getting-started-docker](../03-getting-started-docker.md)
+- [readme](../../README.md)
+- [docker-guide](../../DOCKER.md)
