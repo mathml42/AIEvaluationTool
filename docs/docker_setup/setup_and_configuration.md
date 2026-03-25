@@ -28,8 +28,8 @@ The Compose stack starts:
 - `selenium-browser`
 - `interface-manager`
 - `app-cli`
-- optional `tdms-backend`
-- optional `tdms-frontend`
+- `tdms-backend`
+- `tdms-frontend`
 
 In practice, the core evaluation workflow usually depends on `db`, `selenium-browser`, `interface-manager`, and `app-cli`. The TDMS services are only needed if you also want the data-management UI.
 

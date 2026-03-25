@@ -146,8 +146,3 @@ docker compose up -d --force-recreate db selenium-browser interface-manager app-
 - run analysis
 - generate reports
 
-## Related Sections
-
-- [getting-started-docker](../03-getting-started-docker.md)
-- [readme](../../README.md)
-- [docker-guide](../../DOCKER.md)

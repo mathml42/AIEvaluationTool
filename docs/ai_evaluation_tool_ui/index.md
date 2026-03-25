@@ -18,9 +18,9 @@ The UI in this repository is the Test Case Execution Dashboard. It provides a gu
 
 ## Typical Usage Flow
 
-1. Start the frontend and backend services.
-2. Open the dashboard in the browser.
-3. Create or continue a run.
-4. Monitor progress as the execution moves forward.
-5. Review run details and testcase-level results.
+- Start the frontend and backend services.
+- Open the dashboard in the browser.
+- Create or continue a run.
+- Monitor progress as the execution moves forward.
+- Review run details and testcase-level results.
 

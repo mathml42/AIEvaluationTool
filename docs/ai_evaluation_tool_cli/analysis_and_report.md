@@ -2,6 +2,8 @@
 
 This page explains the final stages of the CLI workflow: response analysis and report generation.
 
+All commands below assume you are running them from the repository root and using the shared `config.json`.
+
 ## Identify The Run Name
 
 After testcase execution completes, collect the `run-name` from one of the following places:
@@ -14,7 +16,7 @@ The same `run-name` is used for both analysis and reporting.
 If the run name is not available in executor logs, retrieve it through the testcase executor:
 
 ```bash
-python main.py --config "config.json" --get-runs
+python3 src/app/testcase_executor/main.py --config "config.json" --get-runs
 ```
 
 Direct database queries can also be used as a fallback.
@@ -22,7 +24,7 @@ Direct database queries can also be used as a fallback.
 SQLite:
 
 ```bash
-sqlite3 AIEvaluationData.db \
+sqlite3 data/AIEvaluationData.db \
   "SELECT run_id, run_name, created_at FROM test_runs ORDER BY created_at DESC LIMIT 5;"
 ```
 
@@ -35,18 +37,17 @@ mysql -u aiet_user -p aievaluationtool \
 
 ## Run Response Analysis
 
-Navigate to the analyzer directory and start the analysis step:
+Start the analysis step from the repository root:
 
 ```bash
-cd src/app/response_analyzer
-python analyze.py --config "path to config file" --run-name <run-name>
+python3 src/app/response_analyzer/analyze.py --config "config.json" --run-name <run-name>
 ```
 
 During this step, the analyzer processes collected responses using the configured evaluation strategies.
 
 ### Analyzer CLI Arguments
 
-- `--config`: Path to the analyzer configuration file. Default is `config.json`.
+- `--config`: Path to the shared CLI configuration file. Use the repository-level `config.json`.
 - `--get-config-template` or `-T`: Prints a template configuration file.
 - `--verbosity` or `-v`: Sets logging verbosity from `0` to `5`. Default is `5`.
 - `--run-name` or `-r`: Name of the execution run to analyze.
@@ -59,13 +60,13 @@ During this step, the analyzer processes collected responses using the configure
 Re-run failed analysis cases:
 
 ```bash
-python analyze.py --config config.json --run-name "doodle-accepting-pascal-nibh" --retry-failed --force
+python3 src/app/response_analyzer/analyze.py --config "config.json" --run-name "doodle-accepting-pascal-nibh" --retry-failed --force
 ```
 
 Re-analyze specific run detail IDs:
 
 ```bash
-python analyze.py --config config.json --run-name "doodle-accepting-pascal-nibh" --detail-ids 2,4,5,6 --force
+python3 src/app/response_analyzer/analyze.py --config "config.json" --run-name "doodle-accepting-pascal-nibh" --detail-ids 2,4,5,6 --force
 ```
 
 Operational note:
@@ -79,16 +80,15 @@ Reference:
 
 ## Generate The Evaluation Report
 
-Use the same `run-name` to create the final report:
+Use the same `run-name` and the same shared config file to create the final report:
 
 ```bash
-cd src/app/response_analyzer
-python report.py --config "path to config file" --run-name <run-name> --get-report
+python3 src/app/response_analyzer/report.py --config "config.json" --run-name <run-name> --get-report
 ```
 
 ### Report Generator CLI Arguments
 
-- `--config`: Path to the report configuration file. Default is `config.json`.
+- `--config`: Path to the shared CLI configuration file. Use the repository-level `config.json`.
 - `--get-config-template` or `-T`: Prints a template configuration file.
 - `--verbosity` or `-v`: Sets logging verbosity from `0` to `5`. Default is `5`.
 - `--get-runs` or `-N`: Lists available execution runs.
@@ -114,4 +114,4 @@ The report stage is intended to produce detailed evaluation output, including me
 
 - confirm the analysis step completed successfully before running report generation
 - confirm the `run-name` matches the executed run
-- verify the analyzer config points to the same database used during execution
+- verify the shared `config.json` points to the same database used during execution

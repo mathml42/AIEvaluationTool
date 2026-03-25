@@ -44,8 +44,3 @@ Together, these services provide the database layer, browser automation layer, t
 - [setup-and-configuration](./setup_and_configuration.md)
 - [gpu-setup](./gpu_setup.md)
 - [docker-run](./docker_run.md)
-- [docker-compose](../../docker-compose.yml)
-- [getting-started-docker](../03-getting-started-docker.md)
-- [configuration](../05-configuration.md)
-- [readme](../../README.md)
-- [docker-guide](../../DOCKER.md)

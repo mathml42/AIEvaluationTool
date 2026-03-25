@@ -2,23 +2,25 @@
 
 This page documents the execution portion of the CLI workflow: importing evaluation data, starting Interface Manager, listing available plans and metrics, and running testcases against the configured target.
 
+All commands below assume you are running them from the repository root and using the shared `config.json`.
+
 ## Import Test Data Into The Database
 
 Before running evaluations, import the datapoints and related evaluation assets into the configured database.
 
 ```bash
-python3 src/app/importer/main.py --config "src/app/importer/config.json"
+python3 src/app/importer/main.py --config "config.json"
 ```
 
 For deeper database-level logging during import, use:
 
 ```bash
-python3 src/app/importer/main.py --config "src/app/importer/config.json" --orm-debug
+python3 src/app/importer/main.py --config "config.json" --orm-debug
 ```
 
 ### Importer CLI Arguments
 
-- `--config`: Path to the importer configuration file. Default is `config.json`.
+- `--config`: Path to the shared CLI configuration file. In the current workflow, use the repository-level `config.json`.
 - `--orm-debug`: Enables ORM-level debug logging for database operations.
 
 Expected result:
@@ -30,8 +32,7 @@ Expected result:
 The Interface Manager is responsible for handling communication with API, WhatsApp, and web application targets.
 
 ```bash
-cd src/app/interface_manager
-python main.py
+python3 src/app/interface_manager/main.py
 ```
 
 Expected result:
@@ -40,15 +41,14 @@ Expected result:
 
 ## Configure The Test Case Executor
 
-Ensure `src/app/testcase_executor/config.json` contains the correct database and target settings before running the executor.
+Before running the executor, update the repository-level `config.json` with the correct `db`, `target`, and `interface_manager` values.
 
 The testcase executor works as both a discovery tool and an execution tool. In practice, it is useful to inspect plans, metrics, targets, and previous runs before starting a new execution.
 
 ## Review Available Executor Options
 
 ```bash
-cd src/app/testcase_executor
-python main.py --config "config.json" -h
+python3 src/app/testcase_executor/main.py --config "config.json" -h
 ```
 
 Reference:
@@ -57,7 +57,7 @@ Reference:
 
 ### Test Case Executor CLI Arguments
 
-- `--config` or `-c`: Path to the executor configuration file containing database and target details.
+- `--config` or `-c`: Path to the shared CLI configuration file. Use the repository-level `config.json`.
 - `--get-config-template` or `-T`: Prints a template configuration file for reference.
 - `--get-plans` or `-P`: Lists available test plans.
 - `--get-metrics` or `-M`: Lists available evaluation metrics.
@@ -78,7 +78,7 @@ Reference:
 ## List Available Test Plans
 
 ```bash
-python main.py --config "config.json" --get-plans
+python3 src/app/testcase_executor/main.py --config "config.json" --get-plans
 ```
 
 Reference:
@@ -88,7 +88,7 @@ Reference:
 ## List Available Metrics
 
 ```bash
-python main.py --config "config.json" --get-metrics
+python3 src/app/testcase_executor/main.py --config "config.json" --get-metrics
 ```
 
 Reference:
@@ -100,7 +100,7 @@ Reference:
 If you want to inspect testcase availability before executing a run, use:
 
 ```bash
-python main.py --config "config.json" --get-testcases
+python3 src/app/testcase_executor/main.py --config "config.json" --get-testcases
 ```
 
 This is useful when you want to scope execution more precisely with `--testcase-id`.
@@ -110,7 +110,7 @@ This is useful when you want to scope execution more precisely with `--testcase-
 To inspect configured target applications:
 
 ```bash
-python main.py --config "config.json" --get-targets
+python3 src/app/testcase_executor/main.py --config "config.json" --get-targets
 ```
 
 This output helps confirm the execution interface, target type, and domain before running a plan.
@@ -120,7 +120,7 @@ This output helps confirm the execution interface, target type, and domain befor
 To inspect existing runs before creating or continuing one:
 
 ```bash
-python main.py --config "config.json" --get-runs
+python3 src/app/testcase_executor/main.py --config "config.json" --get-runs
 ```
 
 The returned run name can be reused with `--run-continue` if you want to resume execution.
@@ -128,7 +128,7 @@ The returned run name can be reused with `--run-continue` if you want to resume 
 ## Execute Testcases
 
 ```bash
-python main.py \
+python3 src/app/testcase_executor/main.py \
   --testplan-id <testplan-id> \
   --testcase-id <testcase-id> \
   --metric-id <metric-id> \
@@ -154,25 +154,25 @@ At minimum, one of these combinations should be used:
 Basic execution:
 
 ```bash
-python main.py --config "config.json" --testplan-id 1 --execute
+python3 src/app/testcase_executor/main.py --config "config.json" --testplan-id 1 --execute
 ```
 
 Custom run name:
 
 ```bash
-python main.py --config "config.json" --testplan-id 1 --run-name "custom_run" --execute
+python3 src/app/testcase_executor/main.py --config "config.json" --testplan-id 1 --run-name "custom_run" --execute
 ```
 
 Strict filtering:
 
 ```bash
-python main.py --config "config.json" --testplan-id 1 --language-strict --domain-strict --execute
+python3 src/app/testcase_executor/main.py --config "config.json" --testplan-id 1 --language-strict --domain-strict --execute
 ```
 
 Continue an existing run:
 
 ```bash
-python main.py --config "config.json" --testplan-id 1 --run-continue --run-name "previous_run_name" --execute
+python3 src/app/testcase_executor/main.py --config "config.json" --testplan-id 1 --run-continue --run-name "previous_run_name" --execute
 ```
 
 Expected runtime view:
@@ -200,4 +200,4 @@ The generated run name is important and should be preserved, because it is used 
 - if Interface Manager is unreachable, verify it is running before starting the executor
 - if browser automation fails, re-check ChromeDriver compatibility and XPath mappings
 - if plans or metrics are missing, verify the importer step completed successfully
-- if database lookups fail, re-check the database section in your config files
+- if database lookups fail, re-check the `db` section in the shared `config.json`

@@ -2,10 +2,12 @@
 
 This section documents the full command-line workflow for the AI Evaluation Tool in a format suited for an official documentation website. It brings together installation, configuration, GPU and model setup, execution, analysis, and reporting.
 
+The CLI pipeline uses a single shared repository-level `config.json` for importer, testcase execution, response analysis, and report generation.
+
 ## What This Section Covers
 
 - local prerequisites and environment preparation
-- configuration of database, targets, credentials, and environment variables
+- configuration of the shared `config.json`, credentials, and environment variables
 - local and remote GPU-backed model setup
 - importer and testcase executor workflow
 - response analysis and report generation
@@ -20,7 +22,7 @@ This section documents the full command-line workflow for the AI Evaluation Tool
 ## End-to-End Flow
 
 - Install system prerequisites and repository dependencies.
-- Configure the database, environment variables, XPath mappings, and credentials.
+- Configure the shared `config.json`, environment variables, XPath mappings, and credentials.
 - Prepare model endpoints, either locally or on a remote GPU host.
 - Import data and register the target application.
 - Start Interface Manager and execute test cases.

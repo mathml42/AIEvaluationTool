@@ -154,17 +154,17 @@ If either endpoint is wrong, the workflow usually fails later during execution o
 
 The README also notes that these smaller models may be downloaded during execution:
 
-1. `amedvedev/bert-tiny-cognitive-bias`
-2. `LibrAI/longformer-harmful-ro`
-3. `vectara/hallucination_evaluation_model`
-4. `thenlper/gte-small`
-5. `all-MiniLM-L6-v2`
-6. `nicholasKluge/ToxiGuardrail`
-7. `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`
-8. `google/flan-t5-large`
-9. `holistic-ai/bias_classifier_albertv2`
-10. `Human-CentricAI/LLM-Refusal-Classifier`
-11. `cross-encoder/nli-deberta-base`
+- `amedvedev/bert-tiny-cognitive-bias`
+- `LibrAI/longformer-harmful-ro`
+- `vectara/hallucination_evaluation_model`
+- `thenlper/gte-small`
+- `all-MiniLM-L6-v2`
+- `nicholasKluge/ToxiGuardrail`
+- `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`
+- `google/flan-t5-large`
+- `holistic-ai/bias_classifier_albertv2`
+- `Human-CentricAI/LLM-Refusal-Classifier`
+- `cross-encoder/nli-deberta-base`
 
 ## Validation Checklist
 
@@ -174,7 +174,3 @@ The README also notes that these smaller models may be downloaded during executi
 - SSH tunneling is active for remote setups
 - `app-cli` can resolve `host.docker.internal`
 
-[getting-started-docker]: ../03-getting-started-docker.md
-[ai-evaluation-tool]: ../06-ai-evaluation-tool.md
-[readme]: ../../README.md
-[docker-guide]: ../../DOCKER.md

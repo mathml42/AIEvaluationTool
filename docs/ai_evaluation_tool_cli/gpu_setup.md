@@ -10,10 +10,10 @@ Many evaluation strategies depend on model inference endpoints. These may be ser
 
 The following models are required for the standard LLM-as-judge flow:
 
-1. `sarvamai/sarvam-2b-v0.5`
-2. `google/shieldgemma-2b`
-3. `sarvamai/sarvam-translate`
-4. `qwen3:32b`
+- `sarvamai/sarvam-2b-v0.5`
+- `google/shieldgemma-2b`
+- `sarvamai/sarvam-translate`
+- `qwen3:32b`
 
 ## Default Ports
 
@@ -176,6 +176,6 @@ When the service starts correctly, the startup logs should look similar to:
 [INFO] Loading google/shieldgemma-2b...
 [INFO] Loading sarvamai/sarvam-translate...
 [INFO] All models loaded successfully
-[INFO] Sarvam AI Service running on http://0.0.0.0:8000
+[INFO] Sarvam AI Service running on http://0.0.0.0:16000
 [INFO] Ready to serve evaluation requests
 ```

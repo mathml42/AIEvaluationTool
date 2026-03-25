@@ -1,6 +1,6 @@
 # Initial Setup And Configuration
 
-This page covers everything required before running the AI Evaluation Tool from the command line: system prerequisites, repository setup, database preparation, environment variables, XPath and credentials, and target registration.
+This page covers everything required before running the AI Evaluation Tool from the command line: system prerequisites, repository setup, database preparation, the shared CLI configuration, environment variables, XPath and credentials, and target registration.
 
 ## System Requirements
 
@@ -93,23 +93,27 @@ cp src/lib/strategy/.env.example src/lib/strategy/.env
 
 ## Prepare Data Files
 
-Ensure the `data/` directory includes the required evaluation assets:
+Ensure the `data/` directory includes the evaluation assets referenced by the shared `config.json`:
 
-- `DataPoints.json`
 - `plans.json`
+- `updated_datapoints.json`
 - `strategy_map.json`
 - `strategy_id.json`
 - `metric_strategy_mapping.json`
 
+If your local config points to a different testcase file such as `DataPoints.json`, keep the `files.testcases` value aligned with that file.
+
 More detailed seeded datapoints may be maintained separately and added as needed.
 
-## Configure Importer, Executor, And Analyzer
+## Configure The Shared CLI Config
 
-Update the configuration files used by:
+The importer, testcase executor, response analyzer, and report generator all use the repository-level `config.json`.
 
-- `src/app/importer/config.json`
-- `src/app/testcase_executor/config.json`
-- `src/app/response_analyzer/config.json`
+Path:
+
+- `config.json`
+
+Run the CLI commands from the repository root so the same config file works consistently across all stages.
 
 Example structure:
 
@@ -124,14 +128,30 @@ Example structure:
     "password": "jarvis2025",
     "database": "AIEvaluationData"
   },
+  "files": {
+    "plans": "data/plans.json",
+    "testcases": "data/updated_datapoints.json",
+    "strategies": "data/strategy_id.json"
+  },
   "target": {
     "application_type": "WHATSAPP_WEB",
     "application_name": "Vaidya AI",
     "application_url": "https://web.whatsapp.com/",
     "agent_name": "Vaidya AI"
+  },
+  "interface_manager": {
+    "docker": false,
+    "base_url": "http://localhost:8000"
   }
 }
 ```
+
+### What Each Section Is Used For
+
+- `db`: Shared database settings used by importer, testcase executor, response analyzer, and report generation.
+- `files`: Input JSON assets used by the importer.
+- `target`: Target selection used during testcase execution.
+- `interface_manager`: Interface Manager connection details used by the testcase executor.
 
 ## Configure Root Environment Variables
 
@@ -158,7 +178,7 @@ OPENAI_API_KEY="your_openai_api_key"
 
 ## Configure XPath And Credentials
 
-For web and WhatsApp targets, configure:
+For web and WhatsApp targets, configure the Interface Manager support files:
 
 - `src/app/interface_manager/xpaths.json`
 - `src/app/interface_manager/credentials.json`
@@ -225,6 +245,8 @@ Supported target types:
 - `WhatsApp`
 - `WebApp`
 
+The `target.application_name` in the shared `config.json` should match a target already present in the database.
+
 If your workflow requires manual target registration in the importer path, use the following structure:
 
 ```python
@@ -247,17 +269,18 @@ The README also includes related configuration for adjacent systems in the same 
 - `src/app/TDMS/back-end/database/config.json`
 - `src/app/TestCaseExecutorDashBoard/back-end/config.json`
 
-Those files are not part of the core CLI flow, but they matter if you are using TDMS or the web dashboard alongside the CLI pipeline.
+Those files are not part of the core CLI flow that uses the shared repository-level `config.json`, but they matter if you are using TDMS or the web dashboard alongside the CLI pipeline.
 
 ## Quick Readiness Checklist
 
-- repository cloned
+- Repository cloned
 - Python environment created
-- dependencies installed
+- Dependencies installed
 - Chrome and ChromeDriver aligned
-- database configured
+- Database configured
+- Shared `config.json` updated
 - `.env` created
-- strategy `.env` created
+- Strategy `.env` created
 - XPath and credentials configured
-- target details prepared
-- data files present
+- Target details prepared
+- Data files present

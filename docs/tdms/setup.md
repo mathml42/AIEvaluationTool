@@ -66,8 +66,8 @@ The frontend typically starts on `http://localhost:8080`, or another port if `80
 
 After both services are running:
 
-1. Open your browser.
-2. Navigate to the frontend URL shown in the terminal.
-3. Confirm that the TDMS login or landing page is visible.
+- Open your browser.
+- Navigate to the frontend URL shown in the terminal.
+- Confirm that the TDMS login or landing page is visible.
 
 ![TDMS home page](../../screenshots/tdms_home.png)
