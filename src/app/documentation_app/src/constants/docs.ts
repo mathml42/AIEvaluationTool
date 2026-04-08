@@ -13,9 +13,9 @@ export interface DocSection {
   docIds: DocId[];
 }
 
-const GITHUB_OWNER = 'mathml42';
+const GITHUB_OWNER = 'cerai-iitm';
 const GITHUB_REPO = 'AIEvaluationTool';
-const GITHUB_BRANCH = 'himanshu_dev';
+const GITHUB_BRANCH = 'dev';
 const GITHUB_DOCS_PATH = 'docs';
 
 export type DocSectionId =
